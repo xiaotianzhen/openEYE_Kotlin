@@ -30,8 +30,26 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.3.0'
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-
+    // Android 支持 Rxjava
+    // 此处一定要注意使用RxJava2的版本
+    implementation 'io.reactivex.rxjava2:rxjava:2.0.1'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    // Android 支持 Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.1.0'
+    // 衔接 Retrofit & RxJava
+    // 此处一定要注意使用RxJava2的版本
+    implementation 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
+    // 支持Gson解析
+    implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
+    implementation 'com.gyf.immersionbar:immersionbar:2.3.3-beta09'
+    implementation 'com.bigkoo:convenientbanner:2.0.5'
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
+    implementation 'de.greenrobot:eventbus:3.0.0-beta1'
+    implementation 'com.google.android.material:material:1.0.0-beta01'
 }

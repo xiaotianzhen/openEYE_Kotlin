@@ -1,18 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.activity.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
+    <FrameLayout
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/v_main"
+        android:id="@+id/fl_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp" />
+
+
+    <View
+        android:id="@+id/v_main"
+        app:layout_constraintBottom_toTopOf="@id/rg_main"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/bg_dirver" />
+    <RadioGroup
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:id="@+id/rg_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/bg_white"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <RadioButton
+                android:drawableTop="@drawable/main_tab_home"
+                android:id="@+id/rb_main"
+                style="@style/HomeTabStyle"
+                android:checked="true"
+                android:drawablePadding="-3dp"
+                android:text="@string/index" />
+
+            <RadioButton
+                android:drawableTop="@drawable/main_tab_community"
+                android:id="@+id/rb_community"
+                style="@style/HomeTabStyle"
+                android:drawablePadding="1dp"
+                android:text="@string/community" />
+
+            <RadioButton
+                android:drawableTop="@drawable/main_tab_notify"
+                android:id="@+id/rb_notify"
+                style="@style/HomeTabStyle"
+                android:drawablePadding="-3dp"
+                android:text="@string/notify" />
+
+            <RadioButton
+                android:drawableTop="@drawable/main_tab_user"
+                android:id="@+id/rb_user"
+                style="@style/HomeTabStyle"
+                android:drawablePadding="-3dp"
+                android:text="@string/mine" />
+        </RadioGroup>
 </androidx.constraintlayout.widget.ConstraintLayout>

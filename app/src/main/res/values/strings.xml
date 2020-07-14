@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">openEyeKotlin</string>
+    <string name="index">首页</string>
+    <string name="community">社区</string>
+    <string name="notify">通知</string>
+    <string name="mine">我的</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

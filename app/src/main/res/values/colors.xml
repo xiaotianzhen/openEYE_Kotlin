@@ -3,4 +3,15 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+
+    <color name="bg_main_color">#03DAC5</color>
+    <color name="bg_white">#ffffff</color>
+    <color name="bg_dirver">#ececec</color>
+
+
+    <color name="font_losecoupon">#999999</color>
+    <color name="font_grey">#333333</color>
+    <color name="font_white">#ffffff</color>
+    <color name="bg_transparent">#00000000</color>
+    <color name="font_blue">#03DAC5</color>
 </resources>
