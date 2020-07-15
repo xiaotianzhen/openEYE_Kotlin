@@ -8,7 +8,7 @@
     <color name="bg_white">#ffffff</color>
     <color name="bg_dirver">#ececec</color>
 
-
+    <color name="font_black">#000000</color>
     <color name="font_losecoupon">#999999</color>
     <color name="font_grey">#333333</color>
     <color name="font_white">#ffffff</color>

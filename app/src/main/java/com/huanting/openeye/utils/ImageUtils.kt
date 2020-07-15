@@ -37,6 +37,18 @@ class ImageUtils {
                     .apply(RequestOptions.circleCropTransform().placeholder(R.mipmap.ic_loading_image)
                             .error(ColorDrawable(Color.WHITE)).fallback(ColorDrawable(Color.RED))).into(imageview)
         }
+
+
+        fun loadImage(imageview: ImageView,url: String){
+            Glide.with(imageview.context)
+                .setDefaultRequestOptions(
+                     RequestOptions()
+                        .frame(3000000)
+                        .centerCrop()
+                ).load(url).into(imageview)
+        }
+
+
     }
 
 }
