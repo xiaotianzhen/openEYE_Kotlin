@@ -43,7 +43,6 @@ class DiscoverPresenter {
                 var gson = Gson()
                 var result = gson.toJson(model)
                 //Log.i("yicooll result",result)
-                var isAddBanner = false
                 items.clear()
                 var jsonObject = JSONObject(result)
                 var dataArray: JSONArray = jsonObject.getJSONArray("itemList")

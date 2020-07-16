@@ -54,7 +54,7 @@ class DiscoverAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>{
             }
             TEXTVIEW -> {
                 return TitleViewViewHolder(
-                    LayoutInflater.from(mContext).inflate(R.layout.adapter_dicover_title,parent,false)
+                    LayoutInflater.from(mContext).inflate(R.layout.adapter_title,parent,false)
                 )
             }
             BANNER -> {

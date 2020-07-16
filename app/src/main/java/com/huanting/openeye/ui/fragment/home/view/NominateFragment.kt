@@ -4,21 +4,31 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.huanting.openeye.R
 import com.huanting.openeye.base.BaseFragment
+import com.huanting.openeye.ui.fragment.home.adapter.NominateAdapter
+import com.huanting.openeye.ui.fragment.home.presenter.NominatePresenter
+import kotlinx.android.synthetic.main.fragment_nominate.*
 
 private const val ARG_PARAM1 = "param1"
 
 
-class NominateFragment : BaseFragment() {
+class NominateFragment : BaseFragment(),INominateView{
 
     private var param1: Int? = null
+    private var presenter: NominatePresenter?=null
+    private var myAdapter: NominateAdapter?=null
+    private var data=ArrayList<Any>()
     override fun initView() {
-
+        presenter= NominatePresenter(this)
+        myAdapter= NominateAdapter(activity!!,data)
+        rv_nominate.adapter= myAdapter
+        rv_nominate.layoutManager=LinearLayoutManager(activity)
     }
 
     override fun initEvent() {
-
+        presenter?.getNominateData()
     }
 
 
@@ -46,5 +56,11 @@ class NominateFragment : BaseFragment() {
                     putInt(ARG_PARAM1, type)
                 }
             }
+    }
+
+    override fun showNominateView(data:ArrayList<Any>) {
+          this.data.clear()
+          this.data.addAll(data)
+          myAdapter?.notifyDataSetChanged()
     }
 }

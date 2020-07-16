@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/margin_padding_15dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/im_cover"
+        android:layout_marginEnd="@dimen/margin_padding_15dp"
+        android:layout_marginStart="@dimen/margin_padding_15dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"/>
+
+    <ImageView
+        android:id="@+id/im_author"
+        android:layout_marginTop="@dimen/margin_padding_10dp"
+        android:layout_marginStart="@dimen/margin_padding_15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/im_cover"
+        android:layout_width="40dp"
+        android:layout_height="40dp"/>
+
+    <TextView
+        android:id="@+id/tv_title"
+        app:layout_constraintEnd_toStartOf="@id/im_share"
+        android:text="大自然"
+        android:layout_marginStart="@dimen/margin_padding_10dp"
+        app:layout_constraintStart_toEndOf="@id/im_author"
+        app:layout_constraintTop_toTopOf="@id/im_author"
+        android:textColor="@color/font_black"
+        android:textSize="@dimen/font_size_14sp"
+        android:ellipsize="end"
+        android:lines="1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tv_desc"
+        app:layout_constraintEnd_toStartOf="@id/im_share"
+        app:layout_constraintBottom_toBottomOf="@id/im_author"
+        android:text="开眼创意"
+        android:layout_marginStart="@dimen/margin_padding_10dp"
+        app:layout_constraintStart_toEndOf="@id/im_author"
+        android:textColor="@color/font_losecoupon"
+        android:textSize="@dimen/font_size_12sp"
+        android:ellipsize="end"
+        android:lines="1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"/>
+
+    <ImageView
+        app:layout_constraintTop_toTopOf="@id/im_author"
+        android:background="@mipmap/common_share"
+        app:layout_constraintBottom_toBottomOf="@id/im_author"
+        android:layout_marginEnd="@dimen/margin_padding_15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/im_share"
+        android:layout_width="18dp"
+        android:layout_height="18dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
