@@ -44,7 +44,7 @@ class HomeFragment : BaseFragment() {
                 DAILY
             ))
         vp_home.adapter=MyAdapter(activity!!.supportFragmentManager)
-        vp_home.setCurrentItem(0,false)
+        vp_home.setCurrentItem(1,false)
     }
 
     override fun initEvent() {

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_marginBottom="@dimen/margin_padding_10dp"
+    android:id="@+id/cl_recomment"
+    android:layout_height="wrap_content">
+
+
+    <ImageView
+        android:id="@+id/im_cover"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="3"
+        android:textColor="@color/font_losecoupon"
+        android:textSize="@dimen/font_size_13sp"
+        app:layout_constraintLeft_toLeftOf="@id/im_cover"
+        app:layout_constraintTop_toBottomOf="@id/im_cover" />
+
+    <ImageView
+        android:layout_marginTop="@dimen/margin_padding_5dp"
+        android:id="@+id/im_avatar"
+        android:layout_width="@dimen/margin_padding_20dp"
+        android:layout_height="@dimen/margin_padding_20dp"
+        app:layout_constraintLeft_toLeftOf="@id/im_cover"
+        app:layout_constraintTop_toBottomOf="@id/tv_desc" />
+
+    <TextView
+        android:id="@+id/tv_nickname"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_padding_5dp"
+        android:textColor="@color/font_losecoupon"
+        android:textSize="@dimen/font_size_13sp"
+        app:layout_constraintBottom_toBottomOf="@id/im_avatar"
+        app:layout_constraintEnd_toStartOf="@id/tv_collect_count"
+        app:layout_constraintStart_toEndOf="@id/im_avatar"
+        app:layout_constraintTop_toTopOf="@id/im_avatar" />
+
+    <TextView
+        android:id="@+id/tv_collect_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/im_avatar"
+        app:layout_constraintEnd_toStartOf="@id/im_collect"
+        app:layout_constraintTop_toTopOf="@id/im_avatar" />
+
+    <ImageView
+        android:id="@+id/im_collect"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:background="@mipmap/common_collection"
+        app:layout_constraintBottom_toBottomOf="@id/im_avatar"
+        app:layout_constraintEnd_toEndOf="@id/im_cover"
+        app:layout_constraintTop_toTopOf="@id/im_avatar" />
+</androidx.constraintlayout.widget.ConstraintLayout>
