@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_marginBottom="@dimen/margin_padding_15dp"
+    android:layout_height="wrap_content">
+
+
+    <ImageView
+        android:id="@+id/im_avatar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/margin_padding_15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_issuerName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_padding_10dp"
+        android:textColor="@color/font_black"
+        android:textSize="@dimen/font_size_13sp"
+        app:layout_constraintStart_toEndOf="@id/im_avatar"
+        app:layout_constraintTop_toTopOf="@id/im_avatar" />
+
+    <TextView
+        android:id="@+id/tv_public_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_padding_10dp"
+        android:textColor="@color/font_losecoupon"
+        android:textSize="@dimen/font_size_12sp"
+        app:layout_constraintBottom_toBottomOf="@id/im_avatar"
+        app:layout_constraintStart_toEndOf="@id/im_avatar" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_padding_5dp"
+        android:layout_marginRight="@dimen/margin_padding_20dp"
+        android:ellipsize="end"
+        android:lines="1"
+        android:textColor="@color/font_black"
+        android:textSize="@dimen/font_size_12sp"
+        app:layout_constraintBottom_toBottomOf="@id/im_avatar"
+        app:layout_constraintStart_toEndOf="@id/tv_public_time" />
+
+    <TextView
+        android:id="@+id/tv_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:textColor="@color/font_losecoupon"
+        android:textSize="@dimen/font_size_13sp"
+        app:layout_constraintLeft_toLeftOf="@id/im_avatar"
+        app:layout_constraintTop_toBottomOf="@id/im_avatar" />
+
+
+    <ImageView
+        android:id="@+id/im_test"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginStart="@dimen/margin_padding_15dp"
+        android:layout_marginEnd="@dimen/margin_padding_15dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_desc" />
+
+    <LinearLayout
+        android:id="@+id/ll_like"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/ll_msg"
+        app:layout_constraintTop_toBottomOf="@id/im_test">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@mipmap/common_collection" />
+
+        <TextView
+            android:id="@+id/tv_like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/margin_padding_5dp"
+            android:text="1"
+            android:textColor="@color/font_losecoupon"
+            android:textSize="@dimen/font_size_12sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_msg"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintLeft_toRightOf="@id/ll_like"
+        app:layout_constraintRight_toLeftOf="@id/ll_collect"
+        app:layout_constraintTop_toBottomOf="@id/im_test">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@mipmap/common_collection" />
+
+        <TextView
+            android:id="@+id/tv_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/margin_padding_5dp"
+            android:text="2"
+            android:textColor="@color/font_losecoupon"
+            android:textSize="@dimen/font_size_12sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_collect"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintLeft_toRightOf="@id/ll_msg"
+        app:layout_constraintRight_toLeftOf="@id/ll_share"
+        app:layout_constraintTop_toBottomOf="@id/im_test">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@mipmap/common_collection" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/margin_padding_5dp"
+            android:text="收藏"
+            android:textColor="@color/font_losecoupon"
+            android:textSize="@dimen/font_size_12sp" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/ll_share"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintLeft_toRightOf="@id/ll_collect"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/im_test">
+
+        <ImageView
+            android:id="@+id/im_share"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@mipmap/common_collection" />
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

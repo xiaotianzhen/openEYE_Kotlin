@@ -4,8 +4,6 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -13,9 +11,8 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.huanting.openeye.R
 import com.huanting.openeye.ui.fragment.community.model.entity.recommend.ModelScrollcard
 import com.huanting.openeye.ui.fragment.community.model.entity.vo.RecommendCardVo
-import com.huanting.openeye.utils.ImageUtils
-import com.huanting.openeye.utils.RecyclerDividerItemDecoration
-import com.huanting.openeye.utils.StaggeredDividerItemDecoration
+import com.huanting.openeye.ui.widget.RecyclerDividerItemDecoration
+import com.huanting.openeye.ui.widget.StaggeredDividerItemDecoration
 import com.huanting.openeye.utils.Util
 
 /**
@@ -57,7 +54,12 @@ class RecommendAdapter:RecyclerView.Adapter<RecyclerView.ViewHolder>{
             var model =data[position] as ModelScrollcard
             myHolder.rvChild!!.adapter=ScrollCardAdapter(R.layout.adapter_scroll_cart,model.data.itemList)
             myHolder.rvChild!!.layoutManager=GridLayoutManager(mContext!!,2,LinearLayoutManager.VERTICAL,false)
-            myHolder.rvChild!!.addItemDecoration(RecyclerDividerItemDecoration(mContext,Util.dpTopx(10)))
+            myHolder.rvChild!!.addItemDecoration(
+                RecyclerDividerItemDecoration(
+                    mContext,
+                    Util.dpTopx(10)
+                )
+            )
 
         }else if(data[position] is ArrayList<*>){
             var model=data[position] as ArrayList<Any>
@@ -67,7 +69,12 @@ class RecommendAdapter:RecyclerView.Adapter<RecyclerView.ViewHolder>{
                 myHolder.rvChild!!.adapter=RecommendRealAdapter(R.layout.adapter_recommend_card,model)
                 myHolder.rvChild!!.layoutManager=
                     StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-                myHolder.rvChild!!.addItemDecoration(StaggeredDividerItemDecoration(mContext,Util.dpTopx(10)))
+                myHolder.rvChild!!.addItemDecoration(
+                    StaggeredDividerItemDecoration(
+                        mContext,
+                        Util.dpTopx(10)
+                    )
+                )
             }
         }
     }

@@ -1,6 +1,6 @@
-package com.huanting.openeye.ui.fragment.home.model.entity.nominate
+package com.huanting.openeye.ui.fragment.community.model.entity.concern
 
-data class ModelFollowCard(
+data class ModelConcern(
     val adIndex: Int,
     val `data`: Data,
     val id: Int,
@@ -23,7 +23,7 @@ data class ModelFollowCard(
             data class Data(
                 val ad: Boolean,
                 val adTrack: List<Any>,
-                val author: Any,
+                val author: Author,
                 val brandWebsiteInfo: Any,
                 val campaign: Any,
                 val category: String,
@@ -34,7 +34,7 @@ data class ModelFollowCard(
                 val date: Long,
                 val description: String,
                 val descriptionEditor: String,
-                val descriptionPgc: Any,
+                val descriptionPgc: String,
                 val duration: Int,
                 val favoriteAdTrack: Any,
                 val id: Int,
@@ -63,7 +63,7 @@ data class ModelFollowCard(
                 val tags: List<Tag>,
                 val thumbPlayUrl: Any,
                 val title: String,
-                val titlePgc: Any,
+                val titlePgc: String,
                 val type: String,
                 val waterMarks: Any,
                 val webAdTrack: Any,
@@ -109,7 +109,7 @@ data class ModelFollowCard(
                     val blurred: String,
                     val detail: String,
                     val feed: String,
-                    val homepage: String,
+                    val homepage: Any,
                     val sharing: Any
                 )
 
@@ -126,7 +126,7 @@ data class ModelFollowCard(
                     val childTagIdList: Any,
                     val childTagList: Any,
                     val communityIndex: Int,
-                    val desc: String,
+                    val desc: Any,
                     val haveReward: Boolean,
                     val headerImage: String,
                     val id: Int,
@@ -145,21 +145,17 @@ data class ModelFollowCard(
 
         data class Header(
             val actionUrl: String,
-            val cover: Any,
-            val description: String,
-            val font: Any,
+            val followType: String,
             val icon: String,
             val iconType: String,
             val id: Int,
-            val label: Any,
+            val issuerName: String,
             val labelList: Any,
-            val rightText: Any,
             val showHateVideo: Boolean,
-            val subTitle: Any,
-            val subTitleFont: Any,
-            val textAlign: String,
+            val tagId: Int,
+            val tagName: Any,
             val time: Long,
-            val title: String
+            val topShow: Boolean
         )
     }
 }

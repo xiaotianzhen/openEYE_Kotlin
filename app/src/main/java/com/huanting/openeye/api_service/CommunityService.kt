@@ -11,4 +11,7 @@ interface CommunityService {
 
     @GET("v7/community/tab/rec")
     fun  getRecommendData():Observable<Any>
+
+    @GET("v6/community/tab/follow")
+    fun getConcernData():Observable<Any>
 }

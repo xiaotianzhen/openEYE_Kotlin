@@ -60,7 +60,8 @@ class NominateAdapter :RecyclerView.Adapter<RecyclerView.ViewHolder> {
         if(data[position] is FollowCardVo){
             var myHolder=holder as FollowcardViewHolder
             var model= data[position] as FollowCardVo
-            ImageUtils.loadImageCircle(myHolder.imAuthor!!,model.authorUrl)
+            if(model.authorUrl!=null)
+            ImageUtils.loadImageCircle(myHolder.imAuthor!!,model.authorUrl.toString())
             ImageUtils.loadImage(myHolder.imCover!!,model.coverUrl)
             myHolder.tvTitle?.text=model.title
             myHolder.tvDesc?.text=model.desc

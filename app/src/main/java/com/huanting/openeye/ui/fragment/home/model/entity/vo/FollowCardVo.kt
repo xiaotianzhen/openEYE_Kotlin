@@ -7,7 +7,7 @@ package com.huanting.openeye.ui.fragment.home.model.entity.vo
 data class FollowCardVo(
     val coverUrl: String,
     var videoTime: Int,
-    var authorUrl: String,
+    var authorUrl: String?,
     var desc: String,
     var title: String,
     var videoDesc: String,
