@@ -41,10 +41,26 @@ class RetrofitUtil {
                         //用了自定义的拦截就不能打印日志
                         mHttpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
                         mRetrofit = Retrofit.Builder().addConverterFactory(GsonConverterFactory.create())
-                                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                                .client(mOkHttpClient)
-                                .baseUrl(UrlConfig.BASE_URL)
-                                .build()
+                            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                            .client(mOkHttpClient)
+                            .baseUrl(UrlConfig.BASE_URL)
+                            .build()
+                    }
+                }
+            }
+            return mRetrofit
+        }
+
+        fun getRetorfit2(): Retrofit? {
+            if (mRetrofit == null) {
+                synchronized(RetrofitUtil::class.java) {
+                    if (mRetrofit == null) {
+                        //用了自定义的拦截就不能打印日志
+                        mHttpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
+                        mRetrofit = Retrofit.Builder().addConverterFactory(GsonConverterFactory.create())
+                            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                            .client(mOkHttpClient)
+                            .build()
                     }
                 }
             }

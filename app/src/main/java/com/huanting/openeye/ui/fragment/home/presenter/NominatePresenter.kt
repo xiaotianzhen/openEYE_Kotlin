@@ -110,8 +110,11 @@ class NominatePresenter {
     }
 
     fun parseVideoSmallCard(model:ModelVideoSmallCard){
-        items.add(VideoCartVo(model.data.cover.detail,model.data.duration,model.data.title,model.data.author.name+" / #"+model.data.category,
-        model.data.author.icon,model.data.author.description,model.data.author.name, model.data.playUrl,
-        model.data.cover.blurred,model.data.id,model.data.consumption.collectionCount,model.data.consumption.shareCount))
+        if(model.data.author !=null){
+            items.add(VideoCartVo(model.data.cover.detail,model.data.duration,model.data.title,model.data.author.name+" / #"+model.data.category,
+                model.data.author.icon,model.data.author.description,model.data.author.name, model.data.playUrl,
+                model.data.cover.blurred,model.data.id,model.data.consumption.collectionCount,model.data.consumption.shareCount))
+        }
+
     }
 }

@@ -23,7 +23,7 @@ data class ModelFollowCard(
             data class Data(
                 val ad: Boolean,
                 val adTrack: List<Any>,
-                val author: Any,
+                val author: Author,
                 val brandWebsiteInfo: Any,
                 val campaign: Any,
                 val category: String,
