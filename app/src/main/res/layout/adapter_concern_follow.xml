@@ -59,13 +59,11 @@
         app:layout_constraintTop_toBottomOf="@id/im_avatar" />
 
 
-    <ImageView
-        android:id="@+id/im_test"
+    <com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer
+        app:layout_constraintTop_toBottomOf="@id/tv_desc"
+        android:id="@+id/gsy_player"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginStart="@dimen/margin_padding_15dp"
-        android:layout_marginEnd="@dimen/margin_padding_15dp"
-        app:layout_constraintTop_toBottomOf="@id/tv_desc" />
+        android:layout_height="200dp" />
 
     <LinearLayout
         android:id="@+id/ll_like"
@@ -76,7 +74,7 @@
         app:layout_constraintHorizontal_weight="1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/ll_msg"
-        app:layout_constraintTop_toBottomOf="@id/im_test">
+        app:layout_constraintTop_toBottomOf="@id/gsy_player">
 
         <ImageView
             android:layout_width="30dp"
@@ -104,7 +102,7 @@
         app:layout_constraintHorizontal_weight="1"
         app:layout_constraintLeft_toRightOf="@id/ll_like"
         app:layout_constraintRight_toLeftOf="@id/ll_collect"
-        app:layout_constraintTop_toBottomOf="@id/im_test">
+        app:layout_constraintTop_toBottomOf="@id/gsy_player">
 
         <ImageView
             android:layout_width="30dp"
@@ -132,7 +130,7 @@
         app:layout_constraintHorizontal_weight="1"
         app:layout_constraintLeft_toRightOf="@id/ll_msg"
         app:layout_constraintRight_toLeftOf="@id/ll_share"
-        app:layout_constraintTop_toBottomOf="@id/im_test">
+        app:layout_constraintTop_toBottomOf="@id/gsy_player">
 
         <ImageView
             android:layout_width="30dp"
@@ -159,7 +157,7 @@
         app:layout_constraintHorizontal_weight="1"
         app:layout_constraintLeft_toRightOf="@id/ll_collect"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/im_test">
+        app:layout_constraintTop_toBottomOf="@id/gsy_player">
 
         <ImageView
             android:id="@+id/im_share"

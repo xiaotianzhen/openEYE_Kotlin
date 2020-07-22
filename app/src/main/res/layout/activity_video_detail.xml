@@ -10,8 +10,21 @@
         android:id="@+id/im_bg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_detail"
+
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent">
+
+        <com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer
+            android:id="@+id/gsy_detail_player"
+            android:layout_width="match_parent"
+            android:layout_height="200dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_detail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
