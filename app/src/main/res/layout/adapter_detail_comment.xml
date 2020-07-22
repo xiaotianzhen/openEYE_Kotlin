@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="80dp">
+
+    <ImageView
+        android:id="@+id/im_avatar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/margin_padding_15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_nickname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_padding_10dp"
+        android:ellipsize="end"
+        android:lines="1"
+        android:textColor="@color/font_white"
+        android:textSize="@dimen/font_size_14sp"
+        app:layout_constraintLeft_toRightOf="@id/im_avatar"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_padding_10dp"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:textColor="@color/font_grey"
+        android:textSize="@dimen/font_size_13sp"
+        app:layout_constraintBottom_toTopOf="@id/tv_public_time"
+        app:layout_constraintLeft_toRightOf="@id/im_avatar" />
+
+    <TextView
+        android:id="@+id/tv_public_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_padding_10dp"
+        android:ellipsize="end"
+        android:lines="1"
+        android:textColor="@color/font_grey"
+        android:textSize="@dimen/font_size_13sp"
+        app:layout_constraintBottom_toBottomOf="@id/v_line"
+        app:layout_constraintLeft_toRightOf="@id/im_avatar" />
+
+    <View
+        android:id="@+id/v_line"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="@dimen/margin_padding_10dp"
+        android:background="@color/bg_dirver"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/im_avatar"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_like_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/font_white"
+        android:textSize="@dimen/font_size_13sp"
+        app:layout_constraintRight_toLeftOf="@id/im_like"
+        app:layout_constraintTop_toBottomOf="@id/im_like"
+        app:layout_constraintTop_toTopOf="@id/im_like" />
+
+    <ImageView
+        android:id="@+id/im_like"
+        android:layout_width="14dp"
+        android:layout_height="14dp"
+        android:layout_marginLeft="@dimen/margin_padding_5dp"
+        android:layout_marginTop="@dimen/margin_padding_5dp"
+        android:layout_marginEnd="@dimen/margin_padding_15dp"
+        android:background="@mipmap/player_like"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
