@@ -48,7 +48,7 @@ class CommunityFragment : BaseFragment() {
         fragments.clear()
         fragments.add(RecommendFragment())
         fragments.add(ConcernFragment())
-        vp_community.adapter=MyAdapter(activity!!.supportFragmentManager)
+        vp_community.adapter=MyAdapter(childFragmentManager)
         vp_community.setCurrentItem(0,false)
     }
 

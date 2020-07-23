@@ -52,8 +52,9 @@ class NotifyFragment : BaseFragment() {
         fragments.add(TopicFragment())
         fragments.add(NotificationFragment())
         fragments.add(InteractFragment())
-        vp_notify.adapter=MyAdapter(activity!!.supportFragmentManager)
+        vp_notify.adapter=MyAdapter(childFragmentManager)
         vp_notify.setCurrentItem(0,false)
+
     }
 
     override fun initEvent() {
@@ -86,7 +87,7 @@ class NotifyFragment : BaseFragment() {
             }
     }
 
-    inner class  MyAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
+    inner class  MyAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
         override fun getItem(position: Int): Fragment {
               return fragments[position]
         }

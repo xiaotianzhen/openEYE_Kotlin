@@ -19,31 +19,16 @@ import kotlinx.android.synthetic.main.menu_home_bar.*
 
 class HomeFragment : BaseFragment() {
 
-    companion object {
-        const val DISCOVER=0
-        const val NOMINATE=1
-        const val DAILY=2
-    }
-
     var titles= arrayListOf("发现","推荐","日报")
     var fragments=ArrayList<Fragment>()
 
     override fun initView() {
         tab_lalyout.setupWithViewPager(vp_home)
         fragments.clear()
-        fragments.add(
-            DiscoverFragment.newInstance(
-                DISCOVER
-            ))
-        fragments.add(
-            NominateFragment.newInstance(
-                NOMINATE
-            ))
-        fragments.add(
-            DialyFragment.newInstance(
-                DAILY
-            ))
-        vp_home.adapter=MyAdapter(activity!!.supportFragmentManager)
+        fragments.add(DiscoverFragment())
+        fragments.add(NominateFragment())
+        fragments.add(DialyFragment())
+        vp_home.adapter=MyAdapter(childFragmentManager)
         vp_home.setCurrentItem(1,false)
     }
 
@@ -72,17 +57,14 @@ class HomeFragment : BaseFragment() {
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
-    inner class  MyAdapter:FragmentPagerAdapter{
 
-        constructor(fm:FragmentManager):super(fm){
-        }
-
+    inner class  MyAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
         override fun getItem(position: Int): Fragment {
-           return fragments[position]
+            return fragments[position]
         }
 
         override fun getCount(): Int {
-              return  titles.size
+            return fragments.size
         }
 
         override fun getPageTitle(position: Int): CharSequence? {

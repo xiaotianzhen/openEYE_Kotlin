@@ -25,7 +25,7 @@ class DailyAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     constructor(context: Context,model:ArrayList<Any>){
         mContext=context
-        data.addAll(model)
+        data=model
     }
 
 

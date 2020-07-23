@@ -58,9 +58,9 @@ class DialyFragment : BaseFragment(), IDailyView {
             }
     }
 
-    override fun showDailyView(data: ArrayList<Any>) {
+    override fun showDailyView(model: ArrayList<Any>) {
         this.data.clear()
-        this.data.addAll(data)
+        this.data.addAll(model)
         myAdapter?.notifyDataSetChanged()
     }
 }
