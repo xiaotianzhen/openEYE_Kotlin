@@ -7,5 +7,5 @@ import io.reactivex.Observer
  * on 2020/7/13
  */
  interface IDiscoverBiz {
-     fun getDiscoverData(observer: Observer<Any>)
+     fun getDiscoverData(url:String,observer: Observer<Any>)
 }

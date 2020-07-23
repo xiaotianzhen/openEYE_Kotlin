@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/swipe_to_refresh_header"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/swipe_foot_layout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+
+        <ProgressBar
+            android:id="@+id/swipe_to_load_progress"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="@dimen/margin_padding_10dp"
+            android:layout_toLeftOf="@+id/swipe_to_load_text"
+            android:indeterminateBehavior="repeat"
+            android:indeterminateDrawable="@drawable/ic_loading_large_anim"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/swipe_to_load_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/margin_padding_10dp"
+            android:layout_toLeftOf="@+id/swipe_to_load_text"
+            android:src="@mipmap/ic_pulltorefresh_arrow_up"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/swipe_to_load_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="上拉加载更多"
+            android:textColor="#BBBCBD"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
+</LinearLayout>

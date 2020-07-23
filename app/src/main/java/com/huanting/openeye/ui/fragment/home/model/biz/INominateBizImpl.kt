@@ -12,10 +12,10 @@ import io.reactivex.schedulers.Schedulers
  */
 class INominateBizImpl:INominateBiz {
 
-    override fun getNominateData(observer: Observer<Any>) {
+    override fun getNominateData(url:String,observer: Observer<Any>) {
         var cilent= RetrofitUtil.getRetorfit()
         var service=cilent?.create(HomeService::class.java)
-        service!!.getNominateData()
+        service!!.getNominateData(url)
             .subscribeOn(Schedulers.io())
             .unsubscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

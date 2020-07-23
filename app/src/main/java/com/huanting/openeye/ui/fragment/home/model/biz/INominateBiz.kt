@@ -8,5 +8,5 @@ import io.reactivex.Observer
  */
 interface INominateBiz {
 
-    fun getNominateData(observer: Observer<Any>)
+    fun getNominateData(url:String,observer: Observer<Any>)
 }

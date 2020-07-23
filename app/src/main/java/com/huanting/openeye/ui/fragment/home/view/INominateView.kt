@@ -6,5 +6,7 @@ package com.huanting.openeye.ui.fragment.home.view
  */
 interface INominateView {
 
-    fun showNominateView(data:ArrayList<Any>)
+    fun showNominateView(data: ArrayList<Any>)
+
+    fun setNextPageUrl(pageUrl: String)
 }

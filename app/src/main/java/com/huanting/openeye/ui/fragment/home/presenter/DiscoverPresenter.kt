@@ -27,7 +27,7 @@ class DiscoverPresenter {
     }
 
 
-    fun getDiscoverData() {
+    fun getDiscoverData(url: String) {
 
         var items = ArrayList<Any>()
         var observer = object : Observer<Any> {
@@ -51,7 +51,7 @@ class DiscoverPresenter {
                     var data: JSONObject = dataArray[i] as JSONObject
                     Log.i("yicooll type", data.getString("type"))
                     when (data.getString("type")) {
-                        "horizontalScrollCard"->{
+                        "horizontalScrollCard" -> {
                             var model: ModelTopBanner = gson.fromJson(
                                 dataArray[i].toString(),
                                 ModelTopBanner::class.java
@@ -108,6 +108,6 @@ class DiscoverPresenter {
             }
         }
         //这里直接传入观察者，就不需要再model获取到数据的时候再传回presenter了
-        mDiscoverBiz?.getDiscoverData(observer)
+        mDiscoverBiz?.getDiscoverData(url, observer)
     }
 }

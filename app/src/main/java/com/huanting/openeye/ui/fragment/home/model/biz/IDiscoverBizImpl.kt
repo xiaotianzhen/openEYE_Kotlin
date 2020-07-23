@@ -12,10 +12,10 @@ import io.reactivex.schedulers.Schedulers
  */
 class IDiscoverBizImpl:IDiscoverBiz {
 
-    override fun getDiscoverData(observer: Observer<Any>) {
-        var cilent=RetrofitUtil.getRetorfit()
+    override fun getDiscoverData(url:String,observer: Observer<Any>) {
+        var cilent=RetrofitUtil.getRetorfit2()
         var service=cilent?.create(HomeService::class.java)
-        service!!.getDiscoverData()
+        service!!.getDiscoverData(url)
             .subscribeOn(Schedulers.io())
             .unsubscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

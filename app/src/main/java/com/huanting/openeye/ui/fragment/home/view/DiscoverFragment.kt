@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.huanting.openeye.R
 import com.huanting.openeye.base.BaseFragment
+import com.huanting.openeye.network.UrlConfig
 import com.huanting.openeye.ui.fragment.home.adapter.DiscoverAdapter
 import com.huanting.openeye.ui.fragment.home.presenter.DiscoverPresenter
 import kotlinx.android.synthetic.main.fragment_discover.*
@@ -30,7 +31,7 @@ class DiscoverFragment : BaseFragment(),IDiscoverView {
     }
 
     override fun initEvent() {
-        mPresenter?.getDiscoverData()
+        mPresenter?.getDiscoverData(UrlConfig.HOME_DISCOVER)
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -32,7 +32,7 @@ class NominatePresenter {
     }
 
 
-    fun getNominateData(){
+    fun getNominateData(url:String){
 
         var observer=object :Observer<Any> {
             override fun onComplete() {
@@ -73,6 +73,7 @@ class NominatePresenter {
                          }
                      }
                 }
+                mNominateView?.setNextPageUrl(jsonObject.getString("nextPageUrl"))
                 mNominateView?.showNominateView(items)
             }
 
@@ -80,7 +81,7 @@ class NominatePresenter {
                 Log.i("yicooll error", e.toString())
             }
         }
-        mNominateBiz?.getNominateData(observer)
+        mNominateBiz?.getNominateData(url,observer)
     }
 
     private fun parseFollowCardTwo(model: ModelFollowCard) {
