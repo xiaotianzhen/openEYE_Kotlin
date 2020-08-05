@@ -29,7 +29,7 @@ class DailyPresenter {
     }
 
 
-    fun getDailyData(){
+    fun getDailyData(path:String){
 
         var observer=object : Observer<Any>{
             override fun onComplete() {
@@ -61,6 +61,7 @@ class DailyPresenter {
                         }
                     }
                 }
+                iDailyView?.setNextPageUrl(jsonObject.getString("nextPageUrl"))
                 iDailyView?.showDailyView(items)
             }
 
@@ -68,17 +69,20 @@ class DailyPresenter {
                 Log.i("yicooll error", e.toString())
             }
         }
-        iDailyBiz?.getDailyDate(observer)
+        iDailyBiz?.getDailyDate(path,observer)
 
     }
 
     private fun parseFollowCardTwo(model: ModelFollowCard) {
-        items.add(
-            FollowCardVo(model.data.content.data.cover.detail,model.data.content.data.duration,
-                model.data.content.data.author.icon,model.data.content.data.author.name+" / #"+model.data.content.data.category,
-                model.data.content.data.title,model.data.content.data.description,model.data.content.data.author.name,model.data.content.data.description,
-                model.data.content.data.playUrl,model.data.content.data.cover.blurred,model.data.content.data.id)
-        )
+        if(model.data.content.data.author is ModelFollowCard.Data.Content.Data.Author){
+            items.add(
+                items.add(FollowCardVo(model.data.content.data.cover.detail,model.data.content.data.duration,
+                    model.data.content.data.author.icon,model.data.content.data.author.name+" / #"+model.data.content.data.category,
+                    model.data.content.data.title,model.data.content.data.description,model.data.content.data.author.description,model.data.content.data.author.name,
+                    model.data.content.data.playUrl,model.data.content.data.cover.blurred,model.data.content.data.id))
+            )
+        }
+
 
     }
 }

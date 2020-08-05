@@ -9,4 +9,5 @@ import io.reactivex.Observer
  */
 interface INotificationView {
     fun showNotificationView(model : ModelMessage)
+    fun setNextPageUrl(pageUrl:String)
 }

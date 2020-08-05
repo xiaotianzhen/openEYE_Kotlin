@@ -170,6 +170,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/font_size_10sp"
+        android:lines="1"
         android:textColor="@color/font_white"
         android:textSize="@dimen/font_size_14sp"
         app:layout_constraintLeft_toRightOf="@id/im_author"

@@ -25,7 +25,7 @@ class ConcernPresenter {
         iConcernBiz=IConcernBizImpl()
     }
 
-    fun getConcernData(){
+    fun getConcernData(path:String){
 
         var items=ArrayList<Any>()
         var observer=object : Observer<Any>{
@@ -54,6 +54,7 @@ class ConcernPresenter {
 
                     ))
                 }
+                iConcernView?.setNextPageUrl(jsonObject.getString("nextPageUrl"))
                 iConcernView?.showConcernView(items)
 
             }
@@ -63,7 +64,7 @@ class ConcernPresenter {
             }
 
         }
-        iConcernBiz?.getConcernData(observer)
+        iConcernBiz?.getConcernData(path,observer)
     }
 
 }

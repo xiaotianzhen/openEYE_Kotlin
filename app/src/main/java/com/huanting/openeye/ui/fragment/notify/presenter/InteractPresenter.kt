@@ -23,7 +23,7 @@ class InteractPresenter {
         iInteractBiz=IInteractBizImpl()
     }
 
-    fun getInteractData(){
+    fun getInteractData(path:String){
         var items=ArrayList<InteractVo>()
         var observer=object :Observer<Any>{
             override fun onComplete() {
@@ -41,6 +41,7 @@ class InteractPresenter {
                 for(i in data.itemList.indices){
                     items.add(InteractVo(data.itemList[i].data.imageUrl,data.itemList[i].data.title,data.itemList[i].data.joinCount,data.itemList[i].data.viewCount))
                 }
+                iInteractView?.setNextPageUrl(data.nextPageUrl)
                 iInteractView?.showInteractView(items)
             }
 
@@ -48,6 +49,6 @@ class InteractPresenter {
 
             }
         }
-        iInteractBiz?.getInteractData(observer)
+        iInteractBiz?.getInteractData(path,observer)
     }
 }

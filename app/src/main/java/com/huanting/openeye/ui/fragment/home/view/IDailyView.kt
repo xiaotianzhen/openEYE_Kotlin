@@ -7,4 +7,5 @@ package com.huanting.openeye.ui.fragment.home.view
 interface IDailyView {
 
     fun showDailyView(data:ArrayList<Any>)
+    fun setNextPageUrl(pageUrl: String)
 }

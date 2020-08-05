@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragment.community.view.RecommendFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
+    <com.huanting.openeye.ui.widget.SwipeRecyclerView
+        android:orientation="vertical"
         android:id="@+id/rv_recommend"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

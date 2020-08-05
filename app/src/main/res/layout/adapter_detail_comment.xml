@@ -70,6 +70,7 @@
         app:layout_constraintTop_toTopOf="@id/im_like" />
 
     <ImageView
+        app:layout_goneMarginLeft="@dimen/margin_padding_5dp"
         android:id="@+id/im_like"
         android:layout_width="14dp"
         android:layout_height="14dp"

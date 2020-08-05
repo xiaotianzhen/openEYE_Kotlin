@@ -106,7 +106,7 @@ class NominatePresenter {
     fun parseFollowCard(model: ModelNominateItemList.Data.Item){
         items.add(FollowCardVo(model.data.content.data.cover.detail,model.data.content.data.duration,
         model.data.content.data.author.icon,model.data.content.data.author.name+" / #"+model.data.content.data.category,
-        model.data.content.data.title,model.data.content.data.description,model.data.content.data.author.name,model.data.content.data.description,
+        model.data.content.data.title,model.data.content.data.description,model.data.content.data.author.description,model.data.content.data.author.name,
         model.data.content.data.playUrl,model.data.content.data.cover.blurred,model.data.content.data.id))
     }
 

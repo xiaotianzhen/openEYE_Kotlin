@@ -8,5 +8,5 @@ import io.reactivex.Observer
  */
 interface INotificationBiz {
 
-    fun  getNotificationData(observer:Observer<Any>)
+    fun  getNotificationData(path:String,observer:Observer<Any>)
 }

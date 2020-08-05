@@ -11,10 +11,10 @@ import io.reactivex.schedulers.Schedulers
  * on 2020/7/16
  */
 class IDailyBizImpl:IDailyBiz{
-    override fun getDailyDate(observer: Observer<Any>) {
+    override fun getDailyDate(path:String,observer: Observer<Any>) {
         var cilent= RetrofitUtil.getRetorfit()
         var service=cilent?.create(HomeService::class.java)
-        service!!.getDailyData()
+        service!!.getDailyData(path)
             .subscribeOn(Schedulers.io())
             .unsubscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

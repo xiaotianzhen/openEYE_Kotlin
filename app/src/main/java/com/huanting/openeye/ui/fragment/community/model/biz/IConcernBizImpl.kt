@@ -11,10 +11,10 @@ import io.reactivex.schedulers.Schedulers
  * on 2020/7/17
  */
 class IConcernBizImpl:IConcernBiz {
-    override fun getConcernData(observer: Observer<Any>) {
+    override fun getConcernData(path:String,observer: Observer<Any>) {
         var cilent= RetrofitUtil.getRetorfit()
         var service=cilent?.create(CommunityService::class.java)
-        service!!.getConcernData()
+        service!!.getConcernData(path)
             .subscribeOn(Schedulers.io())
             .unsubscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

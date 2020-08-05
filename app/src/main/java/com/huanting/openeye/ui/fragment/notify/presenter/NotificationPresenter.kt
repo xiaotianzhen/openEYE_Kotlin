@@ -23,7 +23,7 @@ class  NotificationPresenter{
         iNotificationBiz=INotificationBizImpl()
     }
 
-    fun getNotificationData(){
+    fun getNotificationData(path:String){
 
         var observer=object :Observer<Any>{
             override fun onComplete() {
@@ -36,12 +36,13 @@ class  NotificationPresenter{
                 var gson =Gson()
                 var retuslt=gson.toJson(model)
                 var model=gson.fromJson(retuslt, ModelMessage::class.java)
+                iNotificationView?.setNextPageUrl(model.nextPageUrl)
                 iNotificationView?.showNotificationView(model)
             }
 
             override fun onError(e: Throwable?) {
             }
         }
-        iNotificationBiz?.getNotificationData(observer)
+        iNotificationBiz?.getNotificationData(path,observer)
     }
 }

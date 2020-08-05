@@ -12,10 +12,10 @@ import io.reactivex.schedulers.Schedulers
  * on 2020/7/20
  */
  class INotificationBizImpl:INotificationBiz {
-    override fun getNotificationData(observer: Observer<Any>) {
+    override fun getNotificationData(path:String,observer: Observer<Any>) {
         var cilent= RetrofitUtil.getRetorfit()
         var service=cilent?.create(NotificationService::class.java)
-        service!!.getNotificaitonData()
+        service!!.getNotificaitonData(path)
             .subscribeOn(Schedulers.io())
             .unsubscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

@@ -8,4 +8,5 @@ import com.huanting.openeye.ui.fragment.notify.model.entity.vo.TopicViewVo
  */
 interface ITopicChildView {
     fun showTopicChildView(model:ArrayList<TopicViewVo>)
+    fun setNextPageUrl(pageUrl:String)
 }

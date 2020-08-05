@@ -1,13 +1,17 @@
 package com.huanting.openeye.ui.fragment.community.view
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Message
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.huanting.openeye.Constant
 import com.huanting.openeye.R
 import com.huanting.openeye.base.BaseFragment
+import com.huanting.openeye.network.UrlConfig
 import com.huanting.openeye.ui.fragment.community.adapter.ConcernAdapter
 import com.huanting.openeye.ui.fragment.community.model.entity.vo.ConcernCardVo
 import com.huanting.openeye.ui.fragment.community.presenter.ConcernPresenter
@@ -18,27 +22,31 @@ import kotlinx.android.synthetic.main.fragment_concern.*
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-class ConcernFragment : BaseFragment(),IConcernView {
+class ConcernFragment : BaseFragment(), IConcernView {
 
     private var param1: String? = null
     private var param2: String? = null
 
-    private var myAdapter: ConcernAdapter?=null
+    private var myAdapter: ConcernAdapter? = null
 
-    private var presenter: ConcernPresenter?=null
+    private var presenter: ConcernPresenter? = null
 
     private var data = ArrayList<ConcernCardVo>()
 
+    private var isLoadMore = false
+    private var nextPageUrl = ""
+
+
     override fun initView() {
-        presenter= ConcernPresenter(this)
-        myAdapter= ConcernAdapter(R.layout.adapter_concern_follow,data)
-        rv_concern.adapter=myAdapter
-        rv_concern.layoutManager=LinearLayoutManager(activity)
+        presenter = ConcernPresenter(this)
+        myAdapter = ConcernAdapter(R.layout.adapter_concern_follow, data)
+        rv_concern.setAdapter(myAdapter)
+        rv_concern.layoutManager = LinearLayoutManager(activity)
         rv_concern.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
 
-               var manager = rv_concern.layoutManager
+                var manager = rv_concern.layoutManager
                 //firstVisibleItem 为RecyclerView 可见的第一item的position
                 val firstVisibleItem =
                     (manager as LinearLayoutManager).findFirstVisibleItemPosition()
@@ -66,10 +74,33 @@ class ConcernFragment : BaseFragment(),IConcernView {
         })
     }
 
+    private var mHandler = object : Handler() {
+        override fun handleMessage(msg: Message) {
+            super.handleMessage(msg)
 
+            when (msg.what) {
+                Constant.FRESH_STATE -> {
+                    presenter?.getConcernData(UrlConfig.COMMUNITY_CONCERN)
+                    rv_concern.onHeaderRefreshComplete()
+                }
+                Constant.LOADMORE_STATE -> {
+                    isLoadMore = true
+                    if (nextPageUrl.isNotEmpty())
+                        presenter?.getConcernData(nextPageUrl)
+                    rv_concern.onFooterRefreshComplete()
+                }
+            }
+        }
+    }
 
     override fun initEvent() {
-        presenter?.getConcernData()
+        presenter?.getConcernData(UrlConfig.COMMUNITY_CONCERN)
+        rv_concern.setOnHeaderRefreshListener {
+            mHandler.sendEmptyMessageDelayed(Constant.FRESH_STATE, Constant.FRESH_DELAYER)
+        }
+        rv_concern.setOnFooterRefreshListener {
+            mHandler.sendEmptyMessageDelayed(Constant.LOADMORE_STATE, Constant.LOADMORE_DELAYED)
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -99,9 +130,16 @@ class ConcernFragment : BaseFragment(),IConcernView {
     }
 
     override fun showConcernView(model: ArrayList<Any>) {
-        data.clear()
+        if (!isLoadMore) {
+            data.clear()
+        }
         data.addAll(model as ArrayList<ConcernCardVo>)
         myAdapter?.notifyDataSetChanged()
+        isLoadMore = false
+    }
+
+    override fun setNextPageUrl(pageUrl: String) {
+        nextPageUrl = pageUrl
     }
 
 

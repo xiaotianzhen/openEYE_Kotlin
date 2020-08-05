@@ -5,5 +5,6 @@ package com.huanting.openeye.ui.fragment.community.view
  * on 2020/7/17
  */
 interface IConcernView {
-    fun showConcernView(model:ArrayList<Any>)
+    fun showConcernView(model: ArrayList<Any>)
+    fun setNextPageUrl(pageUrl: String)
 }

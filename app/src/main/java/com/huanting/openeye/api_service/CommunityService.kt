@@ -2,6 +2,7 @@ package com.huanting.openeye.api_service
 
 import io.reactivex.Observable
 import retrofit2.http.GET
+import retrofit2.http.Url
 
 /**
  *Created by yicooll
@@ -9,9 +10,9 @@ import retrofit2.http.GET
  */
 interface CommunityService {
 
-    @GET("v7/community/tab/rec")
-    fun  getRecommendData():Observable<Any>
+    @GET
+    fun  getRecommendData(@Url path:String):Observable<Any>
 
-    @GET("v6/community/tab/follow")
-    fun getConcernData():Observable<Any>
+    @GET
+    fun getConcernData(@Url path: String):Observable<Any>
 }

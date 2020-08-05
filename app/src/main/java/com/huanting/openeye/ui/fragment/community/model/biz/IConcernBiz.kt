@@ -8,5 +8,5 @@ import io.reactivex.Observer
  */
 interface IConcernBiz {
 
-    fun getConcernData(observer:Observer<Any>)
+    fun getConcernData(path:String,observer:Observer<Any>)
 }

@@ -4,6 +4,8 @@ import android.app.Activity
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
+import android.view.Window
+import android.view.WindowManager
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -23,6 +25,10 @@ abstract class BaseVideoActivity : GSYBaseActivityDetail<StandardGSYVideoPlayer>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        // 去掉窗口标题
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        // 隐藏顶部的状态栏
+        window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         Density.setCustomDensity(this, application)
         setContentView(R.layout.activity_base)
         var view: View = layoutInflater.inflate(getContentViewLayoutId(), ll_content, false)
@@ -32,7 +38,7 @@ abstract class BaseVideoActivity : GSYBaseActivityDetail<StandardGSYVideoPlayer>
         }
         initView()
         initEvent()
-        ImmersionBar.with(this).fitsSystemWindows(true).statusBarColor(R.color.bg_main_color).init()
+        ImmersionBar.with(this).fullScreen(true)
     }
 
     protected abstract fun getContentViewLayoutId(): Int

@@ -1,5 +1,7 @@
 package com.huanting.openeye.ui.activity.detail.view
 
+import android.app.Activity
+import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -8,7 +10,9 @@ import com.huanting.openeye.base.BaseVideoActivity
 import com.huanting.openeye.ui.activity.detail.adapter.VideoDetailAdapter
 import com.huanting.openeye.ui.activity.detail.model.vo.VideoDetailVo
 import com.huanting.openeye.ui.activity.detail.presenter.VideoDetailPresenter
+import com.huanting.openeye.ui.fragment.home.model.entity.vo.VideoCartVo
 import com.huanting.openeye.utils.ImageUtils
+import com.huanting.openeye.utils.ToActivityHelper
 import com.shuyu.gsyvideoplayer.builder.GSYVideoOptionBuilder
 import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer
 import kotlinx.android.synthetic.main.activity_video_detail.*
@@ -44,6 +48,30 @@ class VideoDetailActivity : BaseVideoActivity(), IVideoDetailView {
         gsy_detail_player.backButton.setOnClickListener {
             finish()
         }
+        adapter?.setOnRecommendClickListener(object : VideoDetailAdapter.OnRecommendClickListener {
+            override fun onRecommendClick(view: View, position: Int) {
+                var model = data[position] as VideoCartVo
+                videoModel = VideoDetailVo(
+                    model.cover,
+                    model.vidoTime.toLong(),
+                    model.title,
+                    model.desc,
+                    model.authorUrl!!,
+                    model.userDesc,
+                    model.nickName,
+                    "",
+                    model.playerUrl,
+                    model.blurredUrl,
+                    "",
+                    model.videoId,
+                    model.collectionCount,
+                    model.shareCount
+                )
+                adapter?.updataHead(videoModel!!)
+                presenter?.getDetailData(videoModel!!.videoId.toString())
+                initVideoBuilderMode();
+            }
+        })
     }
 
 

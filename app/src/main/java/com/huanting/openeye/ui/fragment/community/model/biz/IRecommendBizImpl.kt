@@ -12,10 +12,10 @@ import io.reactivex.schedulers.Schedulers
  */
 class IRecommendBizImpl:IRecommendBiz {
 
-    override fun getRecommendData(observer: Observer<Any>) {
+    override fun getRecommendData(path:String,observer: Observer<Any>) {
         var cilent= RetrofitUtil.getRetorfit()
         var service=cilent?.create(CommunityService::class.java)
-        service!!.getRecommendData()
+        service!!.getRecommendData(path)
             .subscribeOn(Schedulers.io())
             .unsubscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

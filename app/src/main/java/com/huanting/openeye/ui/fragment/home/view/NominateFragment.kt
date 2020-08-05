@@ -1,5 +1,6 @@
 package com.huanting.openeye.ui.fragment.home.view
 
+import android.app.Activity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
@@ -11,8 +12,13 @@ import com.huanting.openeye.Constant
 import com.huanting.openeye.R
 import com.huanting.openeye.base.BaseFragment
 import com.huanting.openeye.network.UrlConfig
+import com.huanting.openeye.ui.activity.detail.model.vo.VideoDetailVo
+import com.huanting.openeye.ui.activity.detail.view.VideoDetailActivity
 import com.huanting.openeye.ui.fragment.home.adapter.NominateAdapter
+import com.huanting.openeye.ui.fragment.home.model.entity.vo.FollowCardVo
+import com.huanting.openeye.ui.fragment.home.model.entity.vo.VideoCartVo
 import com.huanting.openeye.ui.fragment.home.presenter.NominatePresenter
+import com.huanting.openeye.utils.ToActivityHelper
 import kotlinx.android.synthetic.main.fragment_nominate.*
 
 private const val ARG_PARAM1 = "param1"
@@ -61,6 +67,62 @@ class NominateFragment : BaseFragment(), INominateView {
         rv_nominate.setOnFooterRefreshListener {
             mHandler.sendEmptyMessageDelayed(Constant.LOADMORE_STATE, Constant.LOADMORE_DELAYED)
         }
+        myAdapter?.setOnItemClickListener(object : NominateAdapter.OnItemClickListener {
+            override fun onFollowCardClick(view: View, position: Int) {
+                var bundle = Bundle()
+                var model = data[position] as FollowCardVo
+                bundle.putSerializable(
+                    "detail", VideoDetailVo(
+                        model.coverUrl,
+                        model.videoTime.toLong(),
+                        model.title,
+                        model.desc,
+                        model.authorUrl!!,
+                        model.videoDesc,
+                        model.userDesc,
+                        model.nickName,
+                        model.playerUrl,
+                        model.blurredUrl,
+                        "",
+                        model.videoId,
+                        0,
+                        0
+                    )
+                )
+                ToActivityHelper.getInstance()!!.toActivity(
+                    activity!!,
+                    VideoDetailActivity::class.java, bundle
+                )
+            }
+
+            override fun onSmallVideoClick(view: View, position: Int) {
+                var bundle = Bundle()
+                var model = data[position] as VideoCartVo
+                bundle.putSerializable(
+                    "detail", VideoDetailVo(
+                        model.cover,
+                        model.vidoTime.toLong(),
+                        model.title,
+                        model.desc,
+                        model.authorUrl!!,
+                        model.userDesc,
+                        model.nickName,
+                        "",
+                        model.playerUrl,
+                        model.blurredUrl,
+                        "",
+                        model.videoId,
+                        model.collectionCount,
+                        model.shareCount
+                    )
+                )
+                ToActivityHelper.getInstance()!!.toActivity(
+                    activity!!,
+                    VideoDetailActivity::class.java, bundle
+                )
+            }
+
+        })
     }
 
 

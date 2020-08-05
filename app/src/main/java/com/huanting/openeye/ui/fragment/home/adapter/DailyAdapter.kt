@@ -1,6 +1,8 @@
 package com.huanting.openeye.ui.fragment.home.adapter
 
+import android.app.Activity
 import android.content.Context
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,9 +10,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.huanting.openeye.R
+import com.huanting.openeye.ui.activity.detail.model.vo.VideoDetailVo
+import com.huanting.openeye.ui.activity.detail.view.VideoDetailActivity
 import com.huanting.openeye.ui.fragment.home.model.entity.vo.FollowCardVo
 import com.huanting.openeye.ui.fragment.home.model.entity.vo.TitleViewVo
 import com.huanting.openeye.utils.ImageUtils
+import com.huanting.openeye.utils.ToActivityHelper
 
 /**
  *Created by yicooll
@@ -85,6 +90,32 @@ class DailyAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder> {
             tvDesc=itemView.findViewById(R.id.tv_desc)
             imCover=itemView.findViewById(R.id.im_cover)
             imAuthor=itemView.findViewById(R.id.im_author)
+            imCover!!.setOnClickListener {
+                var bundle = Bundle()
+                var model = data[adapterPosition] as FollowCardVo
+                bundle.putSerializable(
+                    "detail", VideoDetailVo(
+                        model.coverUrl,
+                        model.videoTime.toLong(),
+                        model.title,
+                        model.desc,
+                        model.authorUrl!!,
+                        model.videoDesc,
+                        model.userDesc,
+                        model.nickName,
+                        model.playerUrl,
+                        model.blurredUrl,
+                        "",
+                        model.videoId,
+                        0,
+                        0
+                    )
+                )
+                ToActivityHelper.getInstance()!!.toActivity(
+                    mContext as Activity,
+                    VideoDetailActivity::class.java, bundle
+                )
+            }
         }
     }
     inner class TitleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

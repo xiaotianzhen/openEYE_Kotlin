@@ -7,5 +7,5 @@ import io.reactivex.Observer
  * on 2020/7/20
  */
 interface IInteractBiz {
-    fun getInteractData(observer:Observer<Any>)
+    fun getInteractData(path:String,observer:Observer<Any>)
 }

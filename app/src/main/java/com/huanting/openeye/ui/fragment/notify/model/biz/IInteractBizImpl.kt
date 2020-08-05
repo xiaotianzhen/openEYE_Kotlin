@@ -13,10 +13,10 @@ import io.reactivex.schedulers.Schedulers
  */
 class IInteractBizImpl:IInteractBiz {
 
-    override fun getInteractData(observer: Observer<Any>) {
+    override fun getInteractData(path:String,observer: Observer<Any>) {
         var cilent= RetrofitUtil.getRetorfit()
         var service=cilent?.create(NotificationService::class.java)
-        service!!.getInteractData()
+        service!!.getInteractData(path)
             .subscribeOn(Schedulers.io())
             .unsubscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

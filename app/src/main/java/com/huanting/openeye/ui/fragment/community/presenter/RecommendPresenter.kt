@@ -27,7 +27,7 @@ class RecommendPresenter {
         iRecommendBiz=IRecommendBizImpl()
     }
 
-    fun getRecommendData(){
+    fun getRecommendData(path:String){
         var items=ArrayList<Any>()
         var communitycardList=ArrayList<RecommendCardVo>()
       var observer=object : Observer<Any>{
@@ -68,6 +68,7 @@ class RecommendPresenter {
                 if(communitycardList.size>0){
                     items.add(communitycardList)
                 }
+                iRecommendView?.setNextPageUrl(jsonObject.getString("nextPageUrl"))
                 iRecommendView?.showRecommendView(items)
             }
 
@@ -76,6 +77,6 @@ class RecommendPresenter {
             }
 
         }
-        iRecommendBiz?.getRecommendData(observer)
+        iRecommendBiz?.getRecommendData(path,observer)
     }
 }

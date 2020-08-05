@@ -7,5 +7,5 @@ import io.reactivex.Observer
  * on 2020/7/17
  */
 interface IRecommendBiz {
-    fun  getRecommendData(observer:Observer<Any>)
+    fun  getRecommendData(path:String,observer:Observer<Any>)
 }

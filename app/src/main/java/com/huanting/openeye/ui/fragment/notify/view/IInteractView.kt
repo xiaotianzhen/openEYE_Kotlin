@@ -8,4 +8,5 @@ import com.huanting.openeye.ui.fragment.notify.model.entity.vo.InteractVo
  */
 interface IInteractView {
     fun showInteractView(model:ArrayList<InteractVo>)
+    fun setNextPageUrl(pageUrl:String)
 }

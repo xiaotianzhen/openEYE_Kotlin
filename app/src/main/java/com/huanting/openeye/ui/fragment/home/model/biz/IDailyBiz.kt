@@ -8,5 +8,5 @@ import io.reactivex.Observer
  */
 interface IDailyBiz {
 
-    fun getDailyDate(observer: Observer<Any>)
+    fun getDailyDate(path:String,observer: Observer<Any>)
 }

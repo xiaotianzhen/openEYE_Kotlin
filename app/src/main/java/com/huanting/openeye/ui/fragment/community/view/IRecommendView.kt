@@ -7,4 +7,5 @@ package com.huanting.openeye.ui.fragment.community.view
 interface IRecommendView {
 
     fun showRecommendView(model:ArrayList<Any>)
+    fun setNextPageUrl(pageUrl: String)
 }

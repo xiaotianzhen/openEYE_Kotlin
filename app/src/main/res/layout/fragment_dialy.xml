@@ -5,9 +5,10 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragment.home.view.DialyFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
+    <com.huanting.openeye.ui.widget.SwipeRecyclerView
         android:id="@+id/rv_daily"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical" />
 
 </FrameLayout>

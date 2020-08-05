@@ -15,6 +15,7 @@ import com.huanting.openeye.ui.fragment.home.model.entity.vo.SingTitleViewVo
 import com.huanting.openeye.ui.fragment.home.model.entity.vo.VideoCartVo
 import com.huanting.openeye.utils.ImageUtils
 
+
 /**
  *Created by yicooll
  * on 2020/7/21
@@ -28,11 +29,21 @@ class VideoDetailAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private var data = ArrayList<Any>()
     private var mContext: Context? = null
     private var videoModel: VideoDetailVo? = null
+    private var onClick: OnRecommendClickListener? = null
+
+    fun setOnRecommendClickListener(listener: OnRecommendClickListener) {
+        this.onClick = listener
+    }
 
     constructor(context: Context, data: ArrayList<Any>, headData: VideoDetailVo) {
         this.data = data
         mContext = context
         videoModel = headData
+    }
+
+    fun updataHead(headData: VideoDetailVo) {
+        videoModel = headData
+        notifyItemChanged(0)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -83,15 +94,15 @@ class VideoDetailAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {
             myHolder.tvShareCount!!.text = videoModel!!.shareCount.toString()
             myHolder.tvNidkName!!.text = videoModel!!.nickName
             myHolder.tvAuthorDesc!!.text = videoModel!!.userDesc
-            if(videoModel!!.authorUrl!=null){
+            if (videoModel!!.authorUrl != null) {
                 ImageUtils.loadImage(myHolder.imAuthor!!, videoModel!!.authorUrl)
-            }else{
+            } else {
                 ImageUtils.loadImage(myHolder.imAuthor!!, videoModel!!.blurredUrl)
             }
         } else if (data[position - 1] is SingTitleViewVo) {
             var model = data[position - 1] as SingTitleViewVo
             var myHolder = holder as SingTitleHolder
-            myHolder.tvTitle!!.text = model.title+"  >"
+            myHolder.tvTitle!!.text = model.title + "  >"
 
         } else if (data[position - 1] is VideoCartVo) {
             var myHolder = holder as VideoCardHolder
@@ -147,6 +158,11 @@ class VideoDetailAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {
             tvTitle = itemView.findViewById(R.id.tv_title)
             tvDesc = itemView.findViewById(R.id.tv_desc)
             imCover = itemView.findViewById(R.id.im_cover)
+            imCover!!.setOnClickListener {
+                if (onClick != null) {
+                    onClick!!.onRecommendClick(imCover!!, adapterPosition - 1)
+                }
+            }
         }
     }
 
@@ -186,5 +202,9 @@ class VideoDetailAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {
             tvTitle = itemView.findViewById(R.id.tv_title)
             imAuthor = itemView.findViewById(R.id.im_author)
         }
+    }
+
+    interface OnRecommendClickListener {
+        fun onRecommendClick(view: View, position: Int)
     }
 }

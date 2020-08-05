@@ -10,14 +10,14 @@ import retrofit2.http.Url
  */
 interface NotificationService {
 
-    @GET("v3/messages")
-    fun getNotificaitonData():Observable<Any>
+    @GET
+    fun getNotificaitonData(@Url path:String):Observable<Any>
 
     @GET("v7/tag/tabList")
     fun getTopicData():Observable<Any>
 
-    @GET("v7/topic/list")
-    fun getInteractData():Observable<Any>
+    @GET
+    fun getInteractData(@Url path:String):Observable<Any>
 
      @GET
     fun getTopicChildData(@Url path: String):Observable<Any>

@@ -15,6 +15,7 @@ import com.huanting.openeye.ui.fragment.home.model.entity.vo.TitleViewVo
 import com.huanting.openeye.ui.fragment.home.model.entity.vo.VideoCartVo
 import com.huanting.openeye.utils.ImageUtils
 
+
 /**
  *Created by yicooll
  * on 2020/7/16
@@ -28,11 +29,18 @@ class NominateAdapter :RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private val SINGTITLEVIEW=1
     private val TITLEVIEW=2
     private val VIDEOCARD=3
+    private var onClick:OnItemClickListener?=null
+
+    fun setOnItemClickListener(listener: OnItemClickListener){
+        this.onClick=listener
+    }
 
     constructor(context: Context, data:ArrayList<Any>){
         mContext=context
         this.data=data
     }
+
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
                when(viewType){
@@ -108,6 +116,11 @@ class NominateAdapter :RecyclerView.Adapter<RecyclerView.ViewHolder> {
             tvDesc=itemView.findViewById(R.id.tv_desc)
             imCover=itemView.findViewById(R.id.im_cover)
             imAuthor=itemView.findViewById(R.id.im_author)
+            this.imCover!!.setOnClickListener {
+                if(onClick!=null){
+                   onClick!!.onFollowCardClick(this.imCover!!,adapterPosition)
+                }
+            }
         }
     }
     inner class TitleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -127,7 +140,18 @@ class NominateAdapter :RecyclerView.Adapter<RecyclerView.ViewHolder> {
             tvTitle=itemView.findViewById(R.id.tv_title)
             tvDesc=itemView.findViewById(R.id.tv_desc)
             imCover=itemView.findViewById(R.id.im_cover)
+
+            this.imCover!!.setOnClickListener {
+                if(onClick!=null){
+                    onClick!!.onSmallVideoClick(this.imCover!!,adapterPosition)
+                }
+            }
         }
+    }
+
+    interface  OnItemClickListener{
+        fun onFollowCardClick(view:View,position:Int)
+        fun onSmallVideoClick(view:View,position:Int)
     }
 
 }
